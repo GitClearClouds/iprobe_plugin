@@ -86,11 +86,12 @@ if flag :
 	executables = [Executable(
 					script='jpmain.py',
 					base=base,
-					targetName="iprobe_newrelic_fetcher")]
+					targetName="iprobe_plugin")]
+					# targetName="iprobe_newrelic_fetcher")]
 					
 
 	setup(
-			name='iprobe_newrelic_fetcher',
+			name='iprobe_plugin',
 			version='0.1',
 			description='Sample cx_Freeze wxPython script',
 			options = dict(build_exe = buildOptions),
