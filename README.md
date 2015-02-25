@@ -3,7 +3,7 @@ NewRelic ClearClouds Plugin
 
 1        Introduction
 
-         The New Relic ClearClouds Plugin is published and supported by ClearClouds team. This plugin provides real-time network visibility from wire data that is typically unavailable from APM solutions. Currently the following metrics are recorded:
+The New Relic ClearClouds Plugin is published and supported by ClearClouds team. This plugin provides real-time network visibility from wire data that is typically unavailable from APM solutions. Currently the following metrics are recorded:
 
 1.1          TCP
 
@@ -33,7 +33,7 @@ NewRelic ClearClouds Plugin
 
 1.3          Alerts
 
-         New Relic allows you to setup at most 5 metrics. For each of the metrics, you can set a caution threshold and a critical threshold signaled by different colors. Alert policies can be configured against those metrics. When an alert is trigged, New relic platform will not only display it on the GUI, but also inform you via an email or other ways based on your configuration. The alert frequency is once per 30 minutes. Below are the metrics:
+New Relic allows you to setup at most 5 metrics. For each of the metrics, you can set a caution threshold and a critical threshold signaled by different colors. Alert policies can be configured against those metrics. When an alert is trigged, New relic platform will not only display it on the GUI, but also inform you via an email or other ways based on your configuration. The alert frequency is once per 30 minutes. Below are the metrics:
 
 1.3.1     Latency
 
