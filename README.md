@@ -1,121 +1,129 @@
 
-Clearclouds iProbe Plugin for Newrelic
+NewRelic ClearClouds Plugin
 
-1           Introduction:
+Introduction
 
-The iProbe plugin published and supported by Clearclouds team
+==============================================
 
-The iProbe plugin enables integrated monitoring of network performance and traffic abnormally inside New Relic.
+         The New Relic ClearClouds Plugin is published and supported by ClearClouds team. This plugin provides real-time network visibility from wire data that is typically unavailable from APM solutions. Currently the following metrics are recorded:
 
-2           The iProbe plugin monitor items include:
+1.         TCP
 
-● TCP Throughput: Inbound and Outbound
+1.1          Throughput: Total, Client side, Server side, Inbound and Outbound
 
-● TCP latency: Client side and Server side
+1.2          Latency
 
-● TCP establishing status: Syn and Scan
+1.3          Close Status: FIN, TIMEOUT, RESET
 
-● TCP Close Status: by FIN, TIMEOUT, or RESET
+1.4          New/Close connections : Requests per second
 
-● TCP Connections: Requests per second, newly created and past closed
+1.5          Retransmission Rate
 
-● TCP Retransmission Rate
+1.6          Attack (count per second): SYN, Scan
 
-● HTTP Latency: Server response time per transaction
+2.         HTTP 
 
-● HTTP Status Code: 3XX, 4XX, and 5XX and their Error Rates
+1.1          Traffic
 
-● HTTP Apdex: user satisfied degree
+1.2          Latency
 
-● Alert includes at most 5 alerting items from the above
+1.3          Status Codes Count
 
- 
+1.4          Error Rate
 
-3           Requirement
-
-         OS : CentOS 6.2 (64Bits) or later
-
-         Disk :    more than 50G
-
-         Memory : more than 1G
-
-         Software : Python 2.6 or later
-
-                             cx_freeze-4.3.3 or later
+1.5          Apdex: users' satisfaction rate on URL
 
  
 
-4           Source URL : 
+3.         Alerts
 
-4.1          iProbe:  http://www.clearclouds.com/upload/iProbe-VM-1.0-20150205.zip
+        New Relic allows you to setup at most 5 metrics. For each of the metrics, you can set a caution threshold and a critical threshold signaled by different colors. Alert policies can be configured against those metrics. When an alert is trigged, New relic platform will not only display it on the GUI, but also inform you via an email or other ways based on your configuration. The alert frequency is once per 30 minutes. Below are the metrics:
 
-4.2          plugin :  https://github.com/GitClearClouds/iprobe_newrelic_plugin.git
+·         Latency
+
+·         Bytes
+
+·         Error Rate
+
+·         Apdex
+
+·         Attack
 
  
 
-5           Install virtual machine and P-100
+ 
+
+Requirements
+
+==============================================
+
+         The iprobe_plugin need to be installed on the same appliance as the iProbe. 
+
+1.         OS : CentOS 6.2 (64Bits) or later
+
+2.         Disk :    more than 50G
+
+3.         Memory : more than 1G
+
+4.         Software : Python 2.6 or later
+
+cx_freeze-4.3.3 or later
+
+ 
+
+Source URL:
+
+==============================================
+
+iProbe:  http://www.clearclouds.com/upload/iProbe-VM-1.0-20150205.zip
+
+plugin :  https://github.com/GitClearClouds/iprobe_plugin.git
+
+ 
+
+Running and Installation
+
+===============================
+
+1.         Install virtual machine and P-100
 
 Please refer to ISO install.txt to install 
 
-         
-
-6           Install source plugin(if python and cx_freeze installed in your server,or go to next step)
-
-6.1          after download the file iprobe_newrelic_plugin.zip from https://github.com/GitClearClouds/iprobe_newrelic_plugin.git
-
-6.2          enter download directory
-
-6.3          unzip  iprobe_newrelic_plugin.zip
-
-6.4          cd  iprobe_newrelic_plugin
-
-6.5          chmod -R 777  ./*
-
-6.6          sudo python setup.py install
-
  
 
-7           Install  binary plugin(if previous step failed)
+2.         Install plugin
 
-7.1          after download the file iprobe_newrelic_plugin.zip from https://github.com/GitClearClouds/iprobe_newrelic_plugin.git
+1)       download iprobe_plugin.zip from https://github.com/GitClearClouds/iprobe_plugin.git
 
-7.2          enter download directory
+2)       enter the download directory
 
-7.3          unzip  iprobe_newrelic_plugin.zip
+3)       unzip iprobe_plugin.zip
 
-7.4          cd  iprobe_newrelic_plugin/dist
+4)       cd iprobe_plugin
 
-7.5          tar -zxvf fetcher-0.1.linux-x86_64.tar.gz
+5)       chmod -R 777  ./*
 
-7.6          cd fetcher-0.1.linux-x86_64
+6)       sudo python setup.py install
 
-7.7          chmod -R 777  ./*
+3.         configuration
 
-7.8          cp -R ./*  /
+1)         Run the plugin only once:
 
- 
+                  iprobe_ plugin  -d <datadir>  -n <pluginid>  -k <newrelickey>
 
- 
+                   The parameters are defined as below:
 
-8           configuration
+                  <datadir>  :  your data directory
 
-8.1          run the iprobe_newrelic_fetcher plugin only once:
+                  <pluginid>  :  your plugin name, generally server name
 
-                  iprobe_newrelic_fetcher  -d datdir  -n pluginid  -k newrelickey
+                  <newrelickey>  :  your license key from your New Relic account.
 
-                   the parameter is as follows :
+2)         e.g :
 
-                  datadir  :  your data directory
+                  iprobe_plugin -d /home/juyun/datafile  -n ClearClouds -k 19e5cb7a2ec9c43a7a90cec3360fb7b5868d08d6
 
-                  pluginid  :  your plugin name, generally server name
-
-                  newrelickey  :  your license key from your New Relic account.
-
-8.2          e.g :
-
-                  iprobe_newrelic_fetcher -d /home/juyun/datafile  -n ClearClouds -k 19e5cb7a2ec9c43a7a90cec3360fb7b5868d08d6
-
-         until print message as below:
+3)         until print message as below:
 
                   datadir= home/juyun/datafile
 
@@ -125,7 +133,15 @@ Please refer to ISO install.txt to install
 
  
 
-9           Execute fetcher
+ 
 
-         iprobe_newrelic_fetcher  -r
+4.         Execute fetcher
 
+         iprobe_plugin  -r
+
+ 
+
+ 
+
+ 
+﻿
