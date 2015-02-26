@@ -7,9 +7,9 @@ The New Relic ClearClouds Plugin is published and supported by ClearClouds team.
 
 1.1          TCP
 
-1.1.1     Throughput: Total, Client side, Server side, Inbound and Outbound
+1.1.1     Throughput: Total,Inbound and Outbound
 
-1.1.2     Latency
+1.1.2     Latency: Client side and Server side
 
 1.1.3     Close Status: FIN, TIMEOUT, RESET
 
